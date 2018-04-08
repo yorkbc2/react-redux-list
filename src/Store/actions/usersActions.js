@@ -1,7 +1,8 @@
 import {
 	USERS_FETCH_START,
 	USERS_FETCH_END,
-	USERS_FETCH_ERROR
+	USERS_FETCH_ERROR,
+	USERS_SEARCH_BOX
 } from "./../constants/users.js"
 
 export const usersFetchStart = () => {
@@ -21,5 +22,15 @@ export const usersFetchError = (error) => {
 	return {
 		type: USERS_FETCH_ERROR,
 		payload: error
+	}
+}
+
+export const usersSearchBox = (text) => {
+	return {
+		type: USERS_SEARCH_BOX,
+		payload: {
+			text: text,
+			regular: new RegExp(`(${text})`)
+		}
 	}
 }
